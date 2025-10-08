@@ -59,12 +59,60 @@ namespace Assignment_2
         }
         static void Run()
         {
-
-            dynamic input = -1;
+            Bank b = new Bank();
+            Account currAcct = null;
+            int input = -1;
+            int acctMenuInput = -1;
+            float amount = 0.0f;
             while (input != 3)
             {
                 input = GetInput("Int", "Select an option:\n 1. Create Account\n 2. Select Account\n 3. Exit", 3);
-                Console.WriteLine(input);
+                switch(input)
+                {
+                    case 1:
+                        b.OpenAccount();
+                        break;
+                    case 2:
+                        // Prompt user for account number
+                        while (currAcct is null){
+                            currAcct = b.GetAccount(GetInput("Int", "Enter account number: ", 999999));
+                            if (currAcct is null) {
+                                Console.WriteLine("No account matching number. Please try again...");
+                            }
+                        }
+                        
+
+                        // Open Account Menu
+                        
+                        while (acctMenuInput != 5)
+                        {
+                            acctMenuInput = GetInput("Int", "Select an option:\n 1. Check Balance\n 2. Deposit\n 3. Withdraw\n 4. Display Transactions\n 5. Exit", 5);
+                            switch (acctMenuInput)
+                            {
+                                case 1:
+                                    Console.WriteLine("Balance: {0:$0.00}", currAcct.GetBalance());
+                                    break;
+                                case 2:
+                                    amount = GetInput("Float", "Enter deposit amount: ");
+                                    currAcct.Deposit(amount);
+                                    Console.WriteLine("Deposit successful. New balance: {0:$0.00}", currAcct.GetBalance());
+                                    break;
+                                case 3:
+                                    amount = GetInput("Float", "Enter withdrawl amount: ");
+                                    currAcct.Withdraw(amount);
+                                    Console.WriteLine("Withdrawl successful. New balance: {0:$0.00}", currAcct.GetBalance());
+                                    break;
+                                case 4:
+                                    break;
+                                case 5:
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        
+                        break;
+                }
             }
         }
     }

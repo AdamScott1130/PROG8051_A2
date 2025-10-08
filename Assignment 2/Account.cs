@@ -8,67 +8,75 @@ namespace Assignment_2
 {
     internal class Account
     {
-        string AcctHolderName;
-        int AcctNo;
-        float AnnualIntrRate;
-        float Balance;
+        string acctHolderName;
+        int acctNo;
+        float annualIntrRate;
+        float balance;
+        List<string> records;
 
 
         public Account()
         {
-            this.AcctHolderName = AtmApplication.GetInput("String", "Enter account owner name: ");
-            this.AcctNo = AtmApplication.GetInput("Int", "Enter account number: ", 999999);
-            this.AnnualIntrRate = AtmApplication.GetInput("Float", "Enter annual interest rate: ");
-            this.Balance = AtmApplication.GetInput("Float", "Enter account balance: ");
-            Console.WriteLine("Account created with owner {0}, account number {1}, annual interest rate {2:P2}, balance {3:$0.00}.", this.AcctHolderName, this.AcctNo, this.AnnualIntrRate, this.Balance);
+            this.acctHolderName = AtmApplication.GetInput("String", "Enter account owner name: ");
+            this.acctNo = AtmApplication.GetInput("Int", "Enter account number: ", 999999);
+            this.annualIntrRate = AtmApplication.GetInput("Float", "Enter annual interest rate: ");
+            this.balance = AtmApplication.GetInput("Float", "Enter account balance: ");
+            records = new List<string>();
+            Console.WriteLine("Account created with owner {0}, account number {1}, annual interest rate {2:P2}, balance {3:$0.00}.", this.acctHolderName, this.acctNo, this.annualIntrRate, this.balance);
 
         }
         public Account(string InitName, int InitNo, float InitRate, float InitBalance) 
         {
-            this.AcctHolderName = InitName;
-            this.AcctNo = InitNo;
-            this.AnnualIntrRate = InitRate;
-            this.Balance = InitBalance;
+            this.acctHolderName = InitName;
+            this.acctNo = InitNo;
+            this.annualIntrRate = InitRate;
+            this.balance = InitBalance;
+            records = new List<string>();
         }
 
-        float Deposit(float Value)
+        public float Deposit(float Value)
         {
-            return 0.0f;
+            this.balance += Value;
+            this.records.Add($"Deposit {Value:$0.00}. New balance: {this.balance:$0.00}");
+            return this.balance;
         }
 
-        float Withdraw(float Value)
+        public float Withdraw(float Value)
         {
-            return 0.0f;
+            this.balance -= Value;
+            this.records.Add($"Withdraw {Value:$0.00}. New balance: {this.balance:$0.00}");
+            return this.balance;
         }
 
         public string GetAccountHolderName()
         {
-            return "";
+            return this.acctHolderName;
         }
         public int GetAccountNumber()
         {
-            return 0;
+            return this.acctNo;
         }
         public float GetAnnualInterestRate()
         {
-            return 0f;
+            return this.annualIntrRate;
         }
         public float GetBalance()
         {
-            return 0f;
+            return this.balance;
         }
         public float GetMonthlyInterest()
         {
-            return 0f;
+            return (this.GetMonthlyInterest() * this.GetBalance());
         }
         public float GetMonthlyInterestRate()
         {
-            return 0f;
+            return (this.GetAnnualInterestRate() / 12);
         }
-        public void SetAnnualInterestRate(float IntrRate)
+        public void SetAnnualInterestRate(float newIntrRate)
         {
-
+            this.annualIntrRate = newIntrRate;
         }
+
 
     }
 }
