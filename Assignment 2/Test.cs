@@ -6,15 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_2
 {
-    internal class AtmApplication
+    internal class Test
     {
-        public AtmApplication() 
-        {
-            
-        }
-        static void Run()
-        {
-
-        }
     }
 }
