@@ -13,6 +13,69 @@ namespace Assignment_2
         float AnnualIntrRate;
         float Balance;
 
+
+        public Account()
+        {
+            bool ValidInput = false;
+            while (ValidInput == false) {
+                try
+                {
+                    Console.WriteLine("Enter account holder name: ");
+                    this.AcctHolderName = Console.ReadLine();
+                    ValidInput = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Enter a valid input!");
+                }
+            }
+            ValidInput = false;
+
+            while (ValidInput == false)
+            {
+                try
+                {
+                    Console.WriteLine("Enter account number: ");
+                    this.AcctNo = int.Parse(Console.ReadLine());
+                    ValidInput = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Enter a valid input!");
+                }
+            }
+            ValidInput = false;
+            while (ValidInput == false)
+            {
+                try
+                {
+                    Console.WriteLine("Enter annual interest rate: ");
+                    this.AnnualIntrRate = float.Parse(Console.ReadLine());
+                    ValidInput = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Enter a valid input!");
+                }
+            }
+            ValidInput = false;
+
+            while (ValidInput == false)
+            {
+                try
+                {
+                    Console.WriteLine("Enter account balance: ");
+                    this.Balance = float.Parse(Console.ReadLine());
+                    ValidInput = true;
+                }
+                catch
+                {
+                    Console.WriteLine("Enter a valid input!");
+                }
+            }
+            Console.WriteLine("Account created with owner {0}, account number {1}, annual interest rate {2:P2}, balance {3:$0.00}.", this.AcctHolderName, this.AcctNo, this.AnnualIntrRate, this.Balance);
+
+        }
         public Account(string InitName, int InitNo, float InitRate, float InitBalance) 
         {
             this.AcctHolderName = InitName;
