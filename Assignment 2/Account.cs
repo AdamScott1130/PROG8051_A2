@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Assignment_2;
 namespace Assignment_2
 {
     internal class Account
@@ -16,63 +16,10 @@ namespace Assignment_2
 
         public Account()
         {
-            bool ValidInput = false;
-            while (ValidInput == false) {
-                try
-                {
-                    Console.WriteLine("Enter account holder name: ");
-                    this.AcctHolderName = Console.ReadLine();
-                    ValidInput = true;
-                }
-                catch
-                {
-                    Console.WriteLine("Enter a valid input!");
-                }
-            }
-            ValidInput = false;
-
-            while (ValidInput == false)
-            {
-                try
-                {
-                    Console.WriteLine("Enter account number: ");
-                    this.AcctNo = int.Parse(Console.ReadLine());
-                    ValidInput = true;
-                }
-                catch
-                {
-                    Console.WriteLine("Enter a valid input!");
-                }
-            }
-            ValidInput = false;
-            while (ValidInput == false)
-            {
-                try
-                {
-                    Console.WriteLine("Enter annual interest rate: ");
-                    this.AnnualIntrRate = float.Parse(Console.ReadLine());
-                    ValidInput = true;
-                }
-                catch
-                {
-                    Console.WriteLine("Enter a valid input!");
-                }
-            }
-            ValidInput = false;
-
-            while (ValidInput == false)
-            {
-                try
-                {
-                    Console.WriteLine("Enter account balance: ");
-                    this.Balance = float.Parse(Console.ReadLine());
-                    ValidInput = true;
-                }
-                catch
-                {
-                    Console.WriteLine("Enter a valid input!");
-                }
-            }
+            this.AcctHolderName = AtmApplication.GetInput("String", "Enter account owner name: ");
+            this.AcctNo = AtmApplication.GetInput("Int", "Enter account number: ", 999999);
+            this.AnnualIntrRate = AtmApplication.GetInput("Float", "Enter annual interest rate: ");
+            this.Balance = AtmApplication.GetInput("Float", "Enter account balance: ");
             Console.WriteLine("Account created with owner {0}, account number {1}, annual interest rate {2:P2}, balance {3:$0.00}.", this.AcctHolderName, this.AcctNo, this.AnnualIntrRate, this.Balance);
 
         }
