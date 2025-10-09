@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assignment_2
+﻿namespace Assignment_2
 {
     internal class Bank
     {
         List<Account> accounts;
         public Bank()
         {
+            // Create list of accounts
             accounts = new List<Account>();
             // Populate accounts with 10 default accounts
             for(int i = 0; i < 10; i++)
@@ -20,6 +15,7 @@ namespace Assignment_2
         }
 
         public Account GetAccount(int AccountNumber)
+            // Return Account object corresponding to AccountNumber provided (linear search)
         {
             for (int i = 0; i < this.accounts.Count(); i++)
             {
@@ -31,6 +27,7 @@ namespace Assignment_2
             return null;
         }
         public void OpenAccount()
+            // Creates a new account with user-defined data, adds it to the list of accounts
         {
             this.accounts.Add(new Account());
         }

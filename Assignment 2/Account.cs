@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Assignment_2;
-namespace Assignment_2
+﻿namespace Assignment_2
 {
     internal class Account
     {
@@ -16,6 +10,7 @@ namespace Assignment_2
 
 
         public Account()
+            // Populate the new account with user-defined data
         {
             this.acctHolderName = AtmApplication.GetInput("String", "Enter account owner name: ");
             this.acctNo = AtmApplication.GetInput("Int", "Enter account number: ", 999999);
@@ -25,7 +20,8 @@ namespace Assignment_2
             Console.WriteLine("Account created with owner {0}, account number {1}, annual interest rate {2:P2}, balance {3:$0.00}.", this.acctHolderName, this.acctNo, this.annualIntrRate, this.balance);
 
         }
-        public Account(string InitName, int InitNo, float InitRate, float InitBalance) 
+        public Account(string InitName, int InitNo, float InitRate, float InitBalance)
+            // Populate the account with predetermined data (used for generating the ten default accounts)
         {
             this.acctHolderName = InitName;
             this.acctNo = InitNo;
@@ -36,6 +32,7 @@ namespace Assignment_2
 
         public float Deposit(float Value)
         {
+            // Add value to balance and create a record of the transaction
             this.balance += Value;
             this.records.Add($"Deposit {Value:$0.00}. New balance: {this.balance:$0.00}");
             return this.balance;
@@ -43,41 +40,50 @@ namespace Assignment_2
 
         public float Withdraw(float Value)
         {
+            // Subtract value from balance and create a record of the transaction
             this.balance -= Value;
             this.records.Add($"Withdraw {Value:$0.00}. New balance: {this.balance:$0.00}");
             return this.balance;
         }
 
         public string GetAccountHolderName()
+            // Getter for account holder name
         {
             return this.acctHolderName;
         }
         public int GetAccountNumber()
+            // Getter for account number
         {
             return this.acctNo;
         }
         public float GetAnnualInterestRate()
+            // Getter for interest rate
         {
             return this.annualIntrRate;
         }
         public float GetBalance()
+            // Getter for balance
         {
             return this.balance;
         }
         public float GetMonthlyInterest()
+            // Calculates month's interest for the account (not used)
         {
-            return (this.GetMonthlyInterest() * this.GetBalance());
+            return (this.GetMonthlyInterestRate() * this.GetBalance());
         }
         public float GetMonthlyInterestRate()
+            // Calculates month's interest rate for the account (not used)
         {
             return (this.GetAnnualInterestRate() / 12);
         }
         public void SetAnnualInterestRate(float newIntrRate)
         {
+            // Modify account's interest rate (not used)
             this.annualIntrRate = newIntrRate;
         }
         public void DisplayRecords()
         {
+            // Dislay the transaction records to the user
             foreach (string record in this.records)
             {
                 Console.WriteLine(record);
