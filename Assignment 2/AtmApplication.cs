@@ -103,10 +103,12 @@ namespace Assignment_2
                                     Console.WriteLine("Withdrawl successful. New balance: {0:$0.00}", currAcct.GetBalance());
                                     break;
                                 case 4:
+                                    currAcct.DisplayRecords();
                                     break;
                                 case 5:
                                     break;
                                 default:
+                                    Console.WriteLine("Unexpected Behaviour"); // Should never reach here with input validation done
                                     break;
                             }
                         }

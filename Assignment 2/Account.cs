@@ -21,7 +21,7 @@ namespace Assignment_2
             this.acctNo = AtmApplication.GetInput("Int", "Enter account number: ", 999999);
             this.annualIntrRate = AtmApplication.GetInput("Float", "Enter annual interest rate: ");
             this.balance = AtmApplication.GetInput("Float", "Enter account balance: ");
-            records = new List<string>();
+            this.records = new List<string>();
             Console.WriteLine("Account created with owner {0}, account number {1}, annual interest rate {2:P2}, balance {3:$0.00}.", this.acctHolderName, this.acctNo, this.annualIntrRate, this.balance);
 
         }
@@ -76,7 +76,13 @@ namespace Assignment_2
         {
             this.annualIntrRate = newIntrRate;
         }
-
+        public void DisplayRecords()
+        {
+            foreach (string record in this.records)
+            {
+                Console.WriteLine(record);
+            }
+        }
 
     }
 }
