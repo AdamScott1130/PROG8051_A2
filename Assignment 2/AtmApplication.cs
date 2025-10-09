@@ -72,6 +72,7 @@
                         break;
                     case 2:
                         // Selct account from the bank account list - prompt user for account number
+                        currAcct = null; // Reset currAcct so that we can exit and choose a different account
                         while (currAcct is null){
                             currAcct = b.GetAccount(GetInput("Int", "Enter account number: ", 999999));
                             if (currAcct is null) {
@@ -79,6 +80,7 @@
                             }
                         }
                         // currAcct now points to the account selected, open the account menu
+                        acctMenuInput = -1; // Reset acctMenuInput so that we can access the account menu again on another account
                         while (acctMenuInput != 5)
                         {
                             acctMenuInput = GetInput("Int", "Select an option:\n 1. Check Balance\n 2. Deposit\n 3. Withdraw\n 4. Display Transactions\n 5. Exit", 5);
